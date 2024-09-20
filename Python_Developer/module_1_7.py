@@ -23,19 +23,20 @@ students_abc = list(students)  # создаем список из множест
 students_abc.sort()  # сортируем его (по умолч. по алфавиту)
 
 # вариант 1 без циклов:
-av_grades1 = list(map(lambda x: sum(x) / len(x), grades))
-dic_1 = dict(zip(students_abc, av_grades1))
+av_grades1 = list(map(lambda x: sum(x) / len(x), grades)) # создаем список со средними оценками
+dic_1 = dict(zip(students_abc, av_grades1)) # объединяем два списка в словарь
 print(dic_1)
 
 # вариант 2 без циклов:
-av_grades2 = (sum(x) / len(x) for x in grades)
-dic_2 = dict(zip(students_abc, av_grades2))
+av_grades2 = (sum(x) / len(x) for x in grades) # создаем список со средними оценками
+dic_2 = dict(zip(students_abc, av_grades2)) # объединяем два списка в словарь
 print(dic_2)
 
 # вариант 3 с циклом:
-average_grades = {}
+average_grades = {} # создаем пустой словарь
 
 for i in range(len(students_abc)):
+    # пополняем словарь с одновременным вычислением средней оценки
     average_grades[students_abc[i]] = sum(grades[i]) / len(grades[i])
 
 print(average_grades)
