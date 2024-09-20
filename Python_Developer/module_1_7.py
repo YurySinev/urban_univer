@@ -18,12 +18,24 @@
 
 grades = [[5, 3, 3, 5, 4], [2, 2, 2, 3], [4, 5, 5, 2], [4, 4, 3], [5, 5, 5, 4, 5]]
 students = {'Johnny', 'Bilbo', 'Steve', 'Khendrik', 'Aaron'}
-students_abc = list(students)
-students_abc.sort()
 
-# dic_ = dict.fromkeys(students_abc, grades)
-# print(dic_)
-grades_average = {}
+students_abc = list(students)  # создаем список из множества
+students_abc.sort()  # сортируем его (по умолч. по алфавиту)
 
-for k in students_abc:
-    grades_average[k] = sum(grades[k])/len(grades[k])
+# вариант 1 без циклов:
+av_grades1 = list(map(lambda x: sum(x) / len(x), grades))
+dic_1 = dict(zip(students_abc, av_grades1))
+print(dic_1)
+
+# вариант 2 без циклов:
+av_grades2 = (sum(x) / len(x) for x in grades)
+dic_2 = dict(zip(students_abc, av_grades2))
+print(dic_2)
+
+# вариант 3 с циклом:
+average_grades = {}
+
+for i in range(len(students_abc)):
+    average_grades[students_abc[i]] = sum(grades[i]) / len(grades[i])
+
+print(average_grades)
