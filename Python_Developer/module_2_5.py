@@ -30,10 +30,12 @@
 # В случае передачи аргумента со значением 0 или меньше, будет возвращаться пустой список.
 
 def get_matrix(n, m, value):
-    L = [[None for _ in range(m)] for _ in range(n)] # создание пустой матрицы
-    for i in range(len(L)):
-        for j in range(len(L[i])):
-            L[i][j] = value # заполнение ее значениями
+    # L = [[None for _ in range(m)] for _ in range(n)] # создание пустой матрицы
+    # for i in range(len(L)):
+    #     for j in range(len(L[i])):
+    #         L[i][j] = value # заполнение ее значениями
+    # а можно решить задачу вообще одной строкой:
+    L = [[value for _ in range(m)] for _ in range(n)]
     return L
 
 result1 = get_matrix(2, 2, 10)
