@@ -102,20 +102,20 @@ password_dic = {3: "12",
                 19: "118217316415514613712811910",
                 20: "13141911923282183731746416515614713812911"}
 
-def calc_password(F):
-    half_num = int((F - 1) / 2)  # первое число в парольной паре не должно достигать половины исходного числа
+def calc_password(num):
+    half_num = int((num - 1) / 2)  # первое число в парольной паре не должно достигать половины исходного числа
     temp_pwd = []  # временный список чисел для пароля
     for i in range(1, half_num + 1):
-        for j in range(1, first_num + 1):
+        for j in range(1, num + 1):
             if j <= i:  # второе число не д.быть меньше первого
                 continue
-            if first_num % (i + j) == 0: # момент истины
+            if num % (i + j) == 0: # момент истины
                 temp_pwd.append(i)
                 temp_pwd.append(j)
             else:
                 continue
     result = ''.join(list(map(str, temp_pwd)))  # объединяем числовой список в строку
-    if password_dic[F] == result:  # сверяем его с контрольными значениями в словаре
+    if password_dic[num] == result:  # сверяем его с контрольными значениями в словаре
         return f"Пароль к числу {first_num}: {result} \nПароль правильный. Ворота открыты."
     else:
         return f"Пароль неверный. Решетка опущена."
