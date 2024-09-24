@@ -110,7 +110,7 @@ def calc_password(F):
         for j in range(1, first_num + 1):
             if j <= i:  # второе число не д.быть меньше первого
                 continue
-            if first_num % (i + j) == 0:
+            if first_num % (i + j) == 0: # момент истины
                 temp_pwd.append(i)
                 temp_pwd.append(j)
             else:
@@ -121,9 +121,8 @@ def calc_password(F):
         print("Пароль правильный. Ворота открыты.")
     else:
         print(f"Пароль неверный. Решетка опущена.")
-    # return result
 
 
 first_num = random.randint(3, 20)  # первое случайное число от 3 до 20
 print(f"Дано число: {first_num}. \nНайдите пароль к нему.")
-password = calc_password(first_num)  # передаем его для вычисления пароля
+password = calc_password(first_num)  # передаем его в функцию для вычисления пароля
