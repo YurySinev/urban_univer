@@ -49,7 +49,7 @@
 # Обязательно именованные аргументы отделяются от остальных символом "*" перед ними.
 # Именованные аргументы всегда идут после позиционных.
 
-def send_email(message: str, addressee: str, sender="university.help@gmail.com") -> None:
+def send_email(message: str, addressee: str, *, sender="university.help@gmail.com") -> None:
     # Проверка на корректность e-mail отправителя и получателя:
     email_ends = (".com", ".ru", ".net")
     if '@' in addressee and '@' in sender and addressee.endswith(email_ends) and sender.endswith(email_ends):
