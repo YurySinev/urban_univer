@@ -49,7 +49,7 @@
 # Обязательно именованные аргументы отделяются от остальных символом "*" перед ними.
 # Именованные аргументы всегда идут после позиционных.
 
-def send_email(message: str, addressee: str, *, sender="university.help@gmail.com") -> None:
+def send_email(message: str, addressee: str, *, sender="university.help@gmail.com") -> str:
     # Проверка на корректность e-mail отправителя и получателя:
     email_ends = (".com", ".ru", ".net")
     if '@' in addressee and '@' in sender and addressee.endswith(email_ends) and sender.endswith(email_ends):
@@ -63,9 +63,9 @@ def send_email(message: str, addressee: str, *, sender="university.help@gmail.co
 
     # Проверка на отправителя по умолчанию:
     if sender == "university.help@gmail.com":
-        print(f"Письмо успешно отправлено с адреса {sender} на адрес {addressee}.")
+        return print(f"Письмо успешно отправлено с адреса {sender} на адрес {addressee}.")
     else:
-        print(f"НЕСТАНДАРТНЫЙ ОТПРАВИТЕЛЬ! Письмо отправлено с адреса {sender} на адрес {addressee}.")
+        return print(f"НЕСТАНДАРТНЫЙ ОТПРАВИТЕЛЬ! Письмо отправлено с адреса {sender} на адрес {addressee}.")
 
 
 send_email('Это сообщение для проверки связи', 'vasyok1337@gmail.com')
