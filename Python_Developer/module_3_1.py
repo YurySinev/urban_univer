@@ -57,10 +57,11 @@ def string_info(line: str) -> tuple:  # принимает аргумент - с
 def is_contains(line: str, lst: list[str]) -> bool:
     count_calls()
     list_lower = list(map(lambda x: x.lower(), lst))
-    if line.lower() in list_lower:
-        return True
-    else:
-        return False
+    return line.lower() in list_lower
+    # if line.lower() in list_lower:
+    #     return True
+    # else:
+    #     return False
 
 
 print(string_info('Capybara'))
