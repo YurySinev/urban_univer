@@ -33,13 +33,14 @@
 def get_multiplied_digits(num) -> int:
     str_number = str(num)
     if len(str_number) == 1:
-        if str_number == "0" or str_number == "1": # вместо нуля подставляем 1, чтобы не обнулить результат
+        if str_number == "0":  # вместо нуля подставляем 1, чтобы не обнулить результат
             return 1
         else:
             return int(str_number)
     else:
-        first = int(str_number[0]) if int(str_number[0]) != 0 else 1 # тоже возможный ноль заменяем на 1
+        first = int(str_number[0]) if int(str_number[0]) != 0 else 1  # тоже возможный ноль заменяем на 1
         return first * get_multiplied_digits(str_number[1:])
+
 
 list_ = [40203, "40203", 560120486, "8671546230015"]
 for i in list_:
@@ -48,4 +49,3 @@ for i in list_:
 # 24
 # 11520
 # 1209600
-
