@@ -38,7 +38,7 @@ def get_multiplied_digits(num: int) -> int:
         else:
             return int(str_number)
     else:
-        first = int(str_number[0]) if int(str_number[0]) != 0 else 1  # тоже возможный ноль заменяем на 1
+        first = int(str_number[0]) if int(str_number[0]) != 0 else 1  # возможный 0 заменяем на 1
         second = int(str_number[1:])
         return first * get_multiplied_digits(second)
 
