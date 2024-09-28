@@ -33,8 +33,8 @@
 def get_multiplied_digits(num: int) -> int:
     str_number = str(num)
     if len(str_number) == 1:
-        if str_number == "0":  # вместо 0 подставляем 1, не влияющую на результат
-            return 1
+        if str_number == "0":  # вместо 0
+            return 1  # возвращаем 1, не влияющую на результат
         else:
             return int(str_number)
     else:
