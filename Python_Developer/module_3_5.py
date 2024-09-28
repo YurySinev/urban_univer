@@ -42,11 +42,15 @@ def get_multiplied_digits(num) -> int:
         return first * get_multiplied_digits(str_number[1:])
 
 
-list_ = [40203, "40203", 560120486, 0, "8671546230015"]
-for i in list_:
-    print(get_multiplied_digits(i) if i != 0 else 0)
+test_list = [40203, "40203", 560120486, 0, "0", 0.0, "8671546230015"]
+for i in test_list:
+    print(get_multiplied_digits(i) if int(i) != 0 else 0)
+
+# Вывод:
 # 24
 # 24
 # 11520
+# 0
+# 0
 # 0
 # 1209600
