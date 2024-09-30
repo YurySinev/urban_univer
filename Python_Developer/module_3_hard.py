@@ -68,7 +68,7 @@ data_structure = [
 def calculate_structure_sum(data):
     sum = 0
     for element in data:
-        if isinstance(element, int):
+        if isinstance(element, (int, float)):
             sum += element
         elif isinstance(element, str):
             sum += len(element)
