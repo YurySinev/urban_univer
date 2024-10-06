@@ -1,6 +1,3 @@
-nums = [12, 18, 5, 35, 10, 16, 20, 7, 9, 17, 3, 4, 26, 19, 8, 14, 15, 2, 1, 11, 13, 25, 24, 6]
-
-
 # пузырьковая сортировка:
 def bubble_sort(ls: list) -> list:
     swapped = True
@@ -31,6 +28,7 @@ def selection_sort(ls: list):
         ls[i], ls[lowest] = ls[lowest], ls[i]
     return ls
 
+
 # сортировка вставкой:
 def insertion_sort(ls: list) -> list:
     for i in range(1, len(ls)):
@@ -41,12 +39,3 @@ def insertion_sort(ls: list) -> list:
             j -= 1
         ls[j + 1] = key
     return ls
-
-
-if __name__ == '__main__':
-    print(nums)
-    # bubble_sort(nums)
-    # bubble_sort2(nums)
-    # selection_sort(nums)
-    insertion_sort(nums)
-    print(nums)
