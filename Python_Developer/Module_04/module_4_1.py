@@ -1,5 +1,6 @@
 from true_math import divine as true_div
 from fake_math import divine as fake_div
+import sys
 
 result1 = fake_div(69, 3)
 result2 = fake_div(3, 0)
