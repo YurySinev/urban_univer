@@ -12,6 +12,7 @@ nums3 = [43, 17, 100, 47, 31, 55, 59, 95, 97, 86, 45, 4, 48, 31, 36, 95, 71, 2, 
 
 # nums = [random.randint(1, 85) for i in range(39)]
 # print(nums)
+
 # Декоратор для замера времени выполнения функции
 def calculate_time(func):
     def wrapper(*args, **kwargs):
