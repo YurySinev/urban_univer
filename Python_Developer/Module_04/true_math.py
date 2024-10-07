@@ -3,7 +3,7 @@ from math import inf
 
 def divine(x, y):
     if y == 0:
-        return inf
+        return f"{x} / {y} = {inf}"
     else:
         return x / y
 
