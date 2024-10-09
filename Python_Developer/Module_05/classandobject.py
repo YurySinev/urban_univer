@@ -1,4 +1,6 @@
 class Human:
+    head = True
+
     def __init__(self, name="Имярек", age=30):
         self.name = name
         self.age = age
@@ -21,8 +23,48 @@ class Human:
         print(f"У меня день рождения. Теперь мне {self.age}.")
         self.self_info()
 
+    def __len__(self):
+        return self.age
+
+    def __lt__(self, other):
+        return self.age < other.age
+
+    def __eq__(self, other):
+        return self.age == other.age
+
+    def __bool__(self):
+        return bool(self.age)
+
+    def __str__(self):
+        return f'Имя: {self.name}. Возраст: {self.age}'
+
+    # def __del__(self):
+    #     print(f"{self.name} ушел...")
+
 
 yury = Human("Юрий", 63)
 diana = Human("Диана", 25)
 elena = Human("Елена", 65)
-elena.birthday()
+# elena.birthday()
+# diana.birthday()
+# yury.birthday()
+# print(len(diana))
+# print(len(yury))
+# print(yury > diana)
+# print(diana == yury)
+# if yury:
+#     yury.self_info()
+# if diana:
+#     diana.self_info()
+# if elena:
+#     elena.self_info()
+print(yury)
+print(Human.head)
+print(yury.head)
+Human.head = False
+print(Human.head)
+print(yury.head)
+print(diana.head)
+igor = Human("Игорь", 50)
+igor.head = True
+print("Есть ли у Игоря голова? ", igor.head)
