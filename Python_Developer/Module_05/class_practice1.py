@@ -14,6 +14,9 @@ class User:
 
 
 class Database():
+    """
+    База данных. Словарь: пользователи, пароли
+    """
     def __init__(self):
         self.data = {}
 
@@ -25,3 +28,4 @@ if __name__ == '__main__':
     database = Database()
     user = User(input("Введите логин: "), input("Введите пароль: "), input("Введите пароль еще раз: "))
     print(user)
+    database.add_user(user.username,user.password)
