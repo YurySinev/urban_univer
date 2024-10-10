@@ -55,6 +55,7 @@
 
 class House:
     houses_history = []
+
     def __new__(cls, *args, **kwargs):
         instance = super(House, cls).__new__(cls)
         instance.houses_history.append(args[0])
@@ -113,6 +114,7 @@ class House:
         else:
             for i in range(1, new_floor + 1):
                 print(i)
+
 
 # Пример результата выполнения программы:
 # Пример выполнения программы:
