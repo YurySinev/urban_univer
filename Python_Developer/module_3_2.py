@@ -52,11 +52,10 @@
 def send_email(message: str, addressee: str, *, sender="university.help@gmail.com") -> str:
     # Проверка на корректность e-mail отправителя и получателя:
     email_ends = (".com", ".ru", ".net")
-    if not ('@' in addressee and '@' in sender and addressee.endswith(email_ends) and sender.endswith(email_ends)):
+    if '@' in addressee and '@' in sender and addressee.endswith(email_ends) and sender.endswith(email_ends):
+        ...
+    else:
         return print(f"Невозможно отправить письмо с адреса {sender} на адрес {addressee}")
-    #     ... # это не нужно, когда есть решение в одну строчку.
-    # else:
-    #     return print(f"Невозможно отправить письмо с адреса {sender} на адрес {addressee}")
 
     # Проверка на отправку самому себе:
     if sender == addressee:
