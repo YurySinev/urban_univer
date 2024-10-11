@@ -7,6 +7,9 @@ class User:
         self.username = username
         if password == password_confirm:
             self.password = password
+        else:
+            print("Пароли не совпадают. Повторите ввод.")
+            return self.__init__(username, input("Введите пароль: "), input("Введите пароль еще раз: "))
         self.email = None
 
     def __str__(self):
@@ -29,3 +32,4 @@ if __name__ == '__main__':
     user = User(input("Введите логин: "), input("Введите пароль: "), input("Введите пароль еще раз: "))
     print(user)
     database.add_user(user.username,user.password)
+    print(database.data)
