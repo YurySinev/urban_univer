@@ -2,10 +2,22 @@ class User:
     """
     Класс пользователя, содержащий атрибуты: логин, пароль
     """
+    # наборы символов для проверки пароля:
+    symbols = [chr(i) for i in range(33, 48)]
+    caps = [chr(i) for i in range(65, 91)]
+    nums = [i for i in range(0, 10)]
+    letters = [chr(i) for i in range(97, 123)]
 
     def __init__(self, username, password, password_confirm):
         self.username = username
-        self.password = password
+        if len(password) >= 8 and any(self.symbols) in password and any(self.caps) in password and any(
+                self.nums) in password and any(self.letters) in password:
+            self.password = password
+        else:
+            print(
+                f"Пароль должен быть не менее 8 символов в длину и содержать \nкак минимум одну заглавную букву, одну цифру и один специальный символ")
+            return self.__init__(username, input("Введите пароль: "), input("Введите пароль еще раз: "))
+
         # if password == password_confirm:
         #     self.password = password
         # else:
@@ -21,6 +33,7 @@ class Database():
     """
     База данных. Словарь: пользователи, пароли
     """
+
     def __init__(self):
         self.data = {}
 
@@ -32,8 +45,9 @@ if __name__ == '__main__':
     database = Database()
     while True:
         choice = input("Приветствуем Вас! Выберите действие: \n1. Вход \n2. Регистрация")
-        user = User(input("Введите логин: "), pass1 := input("Введите пароль: "), pass2 := input("Введите пароль еще раз: "))
+        user = User(input("Введите логин: "), pass1 := input("Введите пароль: "),
+                    pass2 := input("Введите пароль еще раз: "))
         if pass1 != pass2:
             exit()
-        database.add_user(user.username,user.password)
+        database.add_user(user.username, user.password)
         print(database.data)
