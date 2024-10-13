@@ -10,12 +10,12 @@ class User:
 
     def __init__(self, username, password, password_confirm):
         self.username = username
-        if len(password) >= 8 and any(self.symbols) in password and any(self.caps) in password and any(
-                self.nums) in password and any(self.letters) in password:
+        if len(password) >= 8 and self.check_password(password):
             self.password = password
         else:
             print(
-                f"Пароль должен быть не менее 8 символов в длину и содержать \nкак минимум одну заглавную букву, одну цифру и один специальный символ")
+                f"Пароль должен быть не менее 8 символов в длину и содержать \nкак минимум одну заглавную букву, "
+                f"одну цифру и один специальный символ")
             return self.__init__(username, input("Введите пароль: "), input("Введите пароль еще раз: "))
 
         # if password == password_confirm:
@@ -27,6 +27,16 @@ class User:
 
     def __str__(self):
         return f"Пользователь: {self.username}, пароль: ****"
+
+    def check_password(self, pswd):
+        symbols = [chr(i) for i in range(33, 48)]
+        caps = [chr(i) for i in range(65, 91)]
+        nums = [i for i in range(0, 10)]
+        letters = [chr(i) for i in range(97, 123)]
+        if any(c in pswd for c in symbols) and any(c in pswd for c in caps) and any(c in pswd for c in str(nums)):
+            return True
+        else:
+            return False
 
 
 class Database():
