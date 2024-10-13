@@ -73,6 +73,7 @@ if __name__ == '__main__':
             user = User(input("Введите логин: "), pass1 := input("Введите пароль: "),
                         pass2 := input("Введите пароль еще раз: "))
             if pass1 != pass2:
-                exit()
+                continue
+                # exit()
             database.add_user(user.username, user.password)
             print(database.data)
