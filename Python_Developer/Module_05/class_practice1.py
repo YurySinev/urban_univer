@@ -7,7 +7,7 @@ class User:
         self.username = username
         # сложный пароль c проверкой:
         if len(password) >= 8 and self.check_password(password) \
-                and password_confirm == password_confirm:
+                and password == password_confirm:
             self.password = password
         else:
             print(
