@@ -6,20 +6,24 @@ class User:
     Класс User: nickname, password, age. А также хэширование пароля и проверка на длину и символы (по желанию)
     """
 
+    # простой пароль без повторения:
     def __init__(self, nickname, password, age):
         self.nickname = nickname  # (имя пользователя, строка)
-        # сложный пароль c проверкой и с повторным введением пароля:
-        # if len(password) >= 8 and self.check_password(password)\
-        #                 and password == password_confirm:
-        #     self.password = self._hash_password(password)
-        # else:
-        #     print(
-        #         f"Пароль должен быть не менее 8 символов в длину и содержать \n"
-        #         f"как минимум одну заглавную букву, "
-        #         f"одну цифру и один специальный символ")
-        #     return self.__init__(username, input("Введите пароль: "), input("Введите пароль еще раз: "))
         self.password = self._hash_password(password)
         self.age = age  # (возраст, число)
+
+    # сложный пароль c проверкой и с повторным введением пароля:
+    # def __init__(self, nickname, password, password_confirm, age):
+    #     self.nickname = nickname # имя пользователя
+    # if len(password) >= 8 and self.check_password(password)\
+    #                 and password == password_confirm:
+    #     self.password = self._hash_password(password)
+    # else:
+    #     print(
+    #         f"Пароль должен быть не менее 8 символов в длину и содержать \n"
+    #         f"как минимум одну заглавную букву, "
+    #         f"одну цифру и один специальный символ")
+    #     return self.__init__(username, input("Введите пароль: "), input("Введите пароль еще раз: "))
 
     # проверка сложности пароля:
     def check_password(self, pswd):
