@@ -9,7 +9,7 @@ class User:
     # простой пароль без повторения (для данной задачи):
     def __init__(self, nickname, password, age):
         self.nickname = nickname  # (имя пользователя, строка)
-        self.password = self._hash_password(password)
+        self.password = self.hash_password(password)
         self.age = age  # (возраст, число)
 
     # сложный пароль c проверкой и с повторным введением пароля:
@@ -40,7 +40,7 @@ class User:
             return False
 
     @classmethod  # хэширование пароля:
-    def _hash_password(cls, password):
+    def hash_password(cls, password):
         _hash = hashlib.sha256(password.encode()).hexdigest()
         hash_int = int(_hash, 16)
         return hash_int

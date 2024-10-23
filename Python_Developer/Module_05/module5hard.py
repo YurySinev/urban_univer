@@ -21,7 +21,7 @@ class UrTube:
         # добавляет пользователя в список, если пользователя не существует (с таким же nickname).
         # После регистрации, вход выполняется автоматически.
         if nickname not in self.users:
-            self.users[nickname] = User._hash_password(password), age  # юзера,пароль,возраст > в словарь
+            self.users[nickname] = User.hash_password(password), age  # юзера,пароль,возраст > в словарь
             user = User(nickname, password, age)  # создаем объект User
             self.current_user = nickname # автоматический вход
         else:
@@ -31,7 +31,7 @@ class UrTube:
         # пытается найти пользователя в users с такими же логином и паролем.
         # Если такой пользователь существует, то current_user меняется на найденного.
         # Пароль сравнивается по хэшу.
-        if nickname in self.users and User._hash_password(password) == self.users[nickname]:
+        if nickname in self.users and User.hash_password(password) == self.users[nickname]:
             self.current_user = nickname
             return f'Вход выполнен'
         else:
