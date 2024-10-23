@@ -51,8 +51,6 @@
 # Создайте несколько объектов класса House и проверьте работу методов __del__ и __new__,
 # а также значение атрибута houses_history.
 #
-
-
 class House:
     houses_history = []
 
@@ -116,21 +114,22 @@ class House:
                 print(i)
 
 
-# Пример результата выполнения программы:
-# Пример выполнения программы:
-h1 = House('ЖК Эльбрус', 10)
-print(House.houses_history)
-h2 = House('ЖК Акация', 20)
-print(House.houses_history)
-h3 = House('ЖК Матрёшки', 20)
-print(House.houses_history)
+if __name__ == '__main__':
+    # Пример результата выполнения программы:
+    # Пример выполнения программы:
+    h1 = House('ЖК Эльбрус', 10)
+    print(House.houses_history)
+    h2 = House('ЖК Акация', 20)
+    print(House.houses_history)
+    h3 = House('ЖК Матрёшки', 20)
+    print(House.houses_history)
 
-# # Удаление объектов
-del h2
-del h3
-#
-print(House.houses_history)
-#
+    # # Удаление объектов
+    del h2
+    del h3
+    #
+    print(House.houses_history)
+
 # Вывод на консоль:
 # ['ЖК Эльбрус']
 # ['ЖК Эльбрус', 'ЖК Акация']

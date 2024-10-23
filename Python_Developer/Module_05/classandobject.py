@@ -42,29 +42,31 @@ class Human:
     #     print(f"{self.name} ушел...")
 
 
-yury = Human("Юрий", 63)
-diana = Human("Диана", 25)
-elena = Human("Елена", 65)
-# elena.birthday()
-# diana.birthday()
-# yury.birthday()
-# print(len(diana))
-# print(len(yury))
-# print(yury > diana)
-# print(diana == yury)
-# if yury:
-#     yury.self_info()
-# if diana:
-#     diana.self_info()
-# if elena:
-#     elena.self_info()
-print(yury)
-print(Human.head)
-print(yury.head)
-Human.head = False
-print(Human.head)
-print(yury.head)
-print(diana.head)
-igor = Human("Игорь", 50)
-igor.head = True
-print("Есть ли у Игоря голова? ", igor.head)
+
+if __name__ == '__main__':
+    yury = Human("Юрий", 63)
+    diana = Human("Диана", 25)
+    elena = Human("Елена", 65)
+    # elena.birthday()
+    # diana.birthday()
+    # yury.birthday()
+    # print(len(diana))
+    # print(len(yury))
+    # print(yury > diana)
+    # print(diana == yury)
+    # if yury:
+    #     yury.self_info()
+    # if diana:
+    #     diana.self_info()
+    # if elena:
+    #     elena.self_info()
+    print(yury)
+    print(Human.head)
+    print(yury.head)
+    Human.head = False
+    print(Human.head)
+    print(yury.head)
+    print(diana.head)
+    igor = Human("Игорь", 50)
+    igor.head = True
+    print("Есть ли у Игоря голова? ", igor.head)

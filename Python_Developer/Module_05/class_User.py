@@ -61,6 +61,6 @@ if __name__ == '__main__':
     u2 = User('Lena', 'asdf1#QW', 66)
     print(u2.password)
     print(u1.password == u2.password)
-    mypass = User._hash_password('asdf1#QW')
+    mypass = User.hash_password('asdf1#QW')
     print(mypass == u2.password)
     print(mypass)

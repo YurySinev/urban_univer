@@ -23,7 +23,7 @@ class UrTube:
         if nickname not in self.users:
             self.users[nickname] = User.hash_password(password), age  # юзера,пароль,возраст > в словарь
             user = User(nickname, password, age)  # создаем объект User
-            self.current_user = nickname # автоматический вход
+            self.current_user = nickname  # автоматический вход
         else:
             print(f"Пользователь {nickname} уже существует")
 
@@ -64,12 +64,12 @@ class UrTube:
         # на какой секунде ведётся просмотр.
         #
         have_video = False
-        for i in self.videos: # проверяем, есть ли такой фильм
+        for i in self.videos:  # проверяем, есть ли такой фильм
             if video == i.title:
                 have_video = True  # да, имеется
                 video = i  # вместо названия подставляем сам объект
                 break
-        if have_video: # поскольку фильм имеется, то
+        if have_video:  # поскольку фильм имеется, то
             if self.current_user:  # если это текущий пользователь
                 # проверяем возрастные ограничения
                 if self.users[self.current_user][1] < 18 and video.adult_mode is True:
@@ -80,9 +80,9 @@ class UrTube:
                     for i in range(video.time_now + 1, video.duration + 1):
                         print(i, end=' ')
                         time.sleep(1)
-                        self.current_second += 1 # счетчик секунд проигрывания видео
+                        self.current_second += 1  # счетчик секунд проигрывания видео
                     print("Конец видео")
-                    self.current_second = 0 # обнуление счетчика
+                    self.current_second = 0  # обнуление счетчика
                     return
             else:
                 print("Войдите в аккаунт, чтобы смотреть видео")

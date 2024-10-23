@@ -75,30 +75,30 @@ class House:
                 print(i)
 
 
-h1 = House('ЖК Эльбрус', 10)
-h2 = House('ЖК Акация', 20)
+if __name__ == '__main__':
+    h1 = House('ЖК Эльбрус', 10)
+    h2 = House('ЖК Акация', 20)
 
-print(h1)
-print(h2)
+    print(h1)
+    print(h2)
 
-print(h1 == h2)  # __eq__
+    print(h1 == h2)  # __eq__
 
-h1 = h1 + 10  # __add__
-print(h1)
-print(h1 == h2)
+    h1 = h1 + 10  # __add__
+    print(h1)
+    print(h1 == h2)
 
-h1 += 10  # __iadd__
-print(h1)
+    h1 += 10  # __iadd__
+    print(h1)
 
-h2 = 10 + h2  # __radd__
-print(h2)
+    h2 = 10 + h2  # __radd__
+    print(h2)
 
-print(h1 > h2)  # __gt__
-print(h1 >= h2)  # __ge__
-print(h1 < h2)  # __lt__
-print(h1 <= h2)  # __le__
-print(h1 != h2)  # __ne__
-
+    print(h1 > h2)  # __gt__
+    print(h1 >= h2)  # __ge__
+    print(h1 < h2)  # __lt__
+    print(h1 <= h2)  # __le__
+    print(h1 != h2)  # __ne__
 # Вывод на консоль:
 # Название: ЖК Эльбрус, кол-во этажей: 10
 # Название: ЖК Акация, кол-во этажей: 20
