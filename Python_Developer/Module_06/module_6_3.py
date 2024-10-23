@@ -20,7 +20,8 @@ class Eagle:
 
 class Pegasus(Horse, Eagle):
     def __init__(self):
-        super().__init__()
+        # super().__init__() # это работает, но
+        Horse.__init__(self) # так рекомендует препод
         Eagle.__init__(self)
 
     def move(self, dx, dy):  # где dx и dy изменения дистанции. В этом методе должны запускаться
