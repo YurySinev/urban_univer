@@ -40,9 +40,9 @@ class User:
             return False
 
     @classmethod  # хэширование пароля:
-    def _hash_password(self, password):
-        hash = hashlib.sha256(password.encode()).hexdigest()
-        hash_int = int(hash, 16)
+    def _hash_password(cls, password):
+        _hash = hashlib.sha256(password.encode()).hexdigest()
+        hash_int = int(_hash, 16)
         return hash_int
 
 
