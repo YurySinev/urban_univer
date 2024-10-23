@@ -6,7 +6,7 @@ class User:
     Класс User: nickname, password, age. А также хэширование пароля и проверка на длину и символы (по желанию)
     """
 
-    # простой пароль без повторения:
+    # простой пароль без повторения (для данной задачи):
     def __init__(self, nickname, password, age):
         self.nickname = nickname  # (имя пользователя, строка)
         self.password = self._hash_password(password)
@@ -28,9 +28,9 @@ class User:
     # проверка сложности пароля:
     def check_password(self, pswd):
         # наборы символов:
-        symbols = [chr(i) for i in range(33, 48)]
-        caps = [chr(i) for i in range(65, 91)]
-        nums = [i for i in range(0, 10)]
+        symbols = [chr(i) for i in range(33, 48)]  # спецсимволы
+        caps = [chr(i) for i in range(65, 91)]  # ЗАГЛАВНЫЕ БУКВЫ
+        nums = [i for i in range(0, 10)]  # цифры
         # letters = [chr(i) for i in range(97, 123)]
         # проверка наличия символов из наборов в пароле:
         if any(c in pswd for c in symbols) and any(c in pswd for c in caps) \
@@ -39,7 +39,7 @@ class User:
         else:
             return False
 
-    @classmethod
+    @classmethod  # хэширование пароля:
     def _hash_password(self, password):
         hash = hashlib.sha256(password.encode()).hexdigest()
         hash_int = int(hash, 16)
@@ -48,8 +48,16 @@ class User:
 
 if __name__ == '__main__':
     # проверки
+    symbols = [chr(i) for i in range(33, 48)]  # некоторые спецсимволы
+    caps = [chr(i) for i in range(65, 91)]  # ЗАГЛАВНЫЕ БУКВЫ
+    nums = [i for i in range(0, 10)]  # цифры
+    print(symbols)
+    print(caps)
+    print(nums)
+
     u1 = User('Yury', 'lolkekcheburek', 63)
     print(u1.password)
+    print(u1.check_password('fddi123QW)'))
     u2 = User('Lena', 'asdf1#QW', 66)
     print(u2.password)
     print(u1.password == u2.password)
