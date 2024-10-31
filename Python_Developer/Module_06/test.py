@@ -22,6 +22,7 @@ class Student(Human, StudentGroup):
         self.place = place
         super().info()
 
+
 student = Student('Юрий', 'Урбан', 'Питон 1')
 print(Student.mro())
 print(student.group)
