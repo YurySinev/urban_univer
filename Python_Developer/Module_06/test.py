@@ -27,3 +27,18 @@ student = Student('Юрий', 'Урбан', 'Питон 1')
 print(Student.mro())
 print(student.group)
 student.about()
+print()
+
+
+def __is_valid_color(color):
+    # проверяет корректность переданных значений перед установкой нового цвета.
+    for i in color:
+        if i < 0 or i > 255:
+            return False
+        else:
+            continue
+    return True
+
+
+color = [28, 35, 77]
+print(__is_valid_color(color))
