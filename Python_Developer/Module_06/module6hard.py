@@ -5,23 +5,35 @@ class Figure:
     filled = False
 
     def __init__(self, color, *sides):
-        self.__sides = [1 for i in range(self.sides_count)]  # список с единицами по количеству сторон
-        self.__color = [255, 255, 255]
+        self.__color = [255, 255, 255] # по умолчанию белый
         if len(color) == 3:
             r, g, b = color  # распаковываем кортеж
             self.set_color(r, g, b)  # передаем его на проверку и установку
         if self.__color != [255, 255, 255]:
             self.filled = True
+        self.__sides = self.set_sides(*sides)
 
-    def __is_valid_sides(self, *sides):  # служебный, принимает неограниченное кол-во сторон,
+    def __str__(self):
+        return '_____Просто фигура_____'
+
+    def __is_valid_sides(self, *sides):
         # возвращает True если все стороны целые положительные числа и кол-во новых сторон
         # совпадает с текущим, False - во всех остальных случаях
-        if len(sides) != self.sides_count:
+        if len(sides) != self.__sides:
             return False
+        for i in sides:
+            if i <= 0 or not isinstance(i, int):
+                return False
+            else:
+                continue
+        return True
 
     def set_sides(self, *new_sides):  # должен принимать новые стороны, если их количество
         # не равно sides_count, то не изменять, в противном случае - менять
-        pass
+        if self.__is_valid_color(*new_sides):
+            self.__sides = new_sides
+        else:
+            self.__sides = [1 for i in range(self.sides_count)]  # список с единицами по количеству сторон
 
     def get_sides(self):  # список размеров сторон фигуры
         return self.__sides
@@ -44,9 +56,6 @@ class Figure:
     def __len__(self):  # периметр фигуры
         return sum(self.__sides)
 
-    def __str__(self):
-        return '_____Просто фигура_____'
-
 
 class Circle(Figure):
     sides_count = 1
@@ -55,11 +64,11 @@ class Circle(Figure):
         super().__init__(color, circumference)
         self.__radius = circumference / (2 * 3.14159)  # радиус
 
-    def get_square(self):
-        return 3.14159 * self.__radius ** 2
-
     def __str__(self):
         return '_____Окружность_____'
+
+    def get_square(self):
+        return 3.14159 * self.__radius ** 2
 
 
 class Triangle(Figure):
@@ -68,31 +77,28 @@ class Triangle(Figure):
     def __init__(self, color, *sides):
         super().__init__(color, *sides)
 
+    def __str__(self):
+        return '_____Треугольник_____'
+
     def get_square(self) -> float:  # Площадь треугольника по формуле Герона
         a, b, c = self._Figure__sides
         s = (a + b + c) / 2
         area = (s * (s - a) * (s - b) * (s - c)) ** 0.5
         return area
 
-    def __str__(self):
-        return '_____Треугольник_____'
-
 
 class Cube(Figure):
     sides_count = 12
 
     def __init__(self, color, *sides):
+        self.__sides = [1]
         super().__init__(color, *sides)
-
-    def get_volume(self):
-        return self._Figure__sides[0] ** 3
 
     def __str__(self):
         return '_____Кубик_____'
 
-    # Переопределить __sides сделав список из 12 одинаковы сторон (передаётся 1 сторона)
-    def get_volume(self):  # возвращает объём куба
-        pass
+    def get_volume(self):
+        return self._Figure__sides[0] ** 3
 
 
 if __name__ == '__main__':
