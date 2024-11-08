@@ -11,7 +11,7 @@ class Figure:
             self.set_color(r, g, b)  # передаем его на проверку и установку
         if self.__color != [255, 255, 255]:
             self.filled = True
-        self.__sides = self.set_sides(*sides)
+        self.__sides = [1 for i in range(self.sides_count)]
 
     def __str__(self):
         return '_____Просто фигура_____'
@@ -19,7 +19,7 @@ class Figure:
     def __is_valid_sides(self, *sides):
         # возвращает True если все стороны целые положительные числа и кол-во новых сторон
         # совпадает с текущим, False - во всех остальных случаях
-        if len(sides) != self.__sides:
+        if len(sides) != len(self.__sides):
             return False
         for i in sides:
             if i <= 0 or not isinstance(i, int):
@@ -30,8 +30,8 @@ class Figure:
 
     def set_sides(self, *new_sides):  # должен принимать новые стороны, если их количество
         # не равно sides_count, то не изменять, в противном случае - менять
-        if self.__is_valid_color(*new_sides):
-            self.__sides = new_sides
+        if self.__is_valid_sides(*new_sides):
+            self.__sides = [i for i in new_sides]
         else:
             self.__sides = [1 for i in range(self.sides_count)]  # список с единицами по количеству сторон
 
@@ -113,16 +113,16 @@ if __name__ == '__main__':
     print(cube1.get_color())
     #
     # # Проверка на изменение сторон:
-    # cube1.set_sides(5, 3, 12, 4, 5)  # Не изменится
-    # print(cube1.get_sides())
-    # circle1.set_sides(15)  # Изменится
-    # print(circle1.get_sides())
+    cube1.set_sides(5, 3, 12, 4, 5)  # Не изменится
+    print(cube1.get_sides())
+    circle1.set_sides(15)  # Изменится
+    print(circle1.get_sides())
     #
     # # Проверка периметра (круга), это и есть длина:
-    # print(len(circle1))
+    print(len(circle1))
     #
     # # Проверка объёма (куба):
-    # print(cube1.get_volume())
+    print(cube1.get_volume())
 
 # Выходные данные (консоль):
 # [55, 66, 77]

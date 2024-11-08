@@ -9,36 +9,31 @@ class Figure:
             self.set_color(r, g, b)  # передаем его на проверку и установку
         if self.__color != [255, 255, 255]:
             self.filled = True
-        self.__sides = [1 for i in range(self.sides_count)]  # список с единицами по количеству сторон
+        self.__sides = []
+        self.set_sides(*sides)  # список с единицами по количеству сторон
 
     def __str__(self):
         return '_____Просто фигура_____'
 
-    def __is_valid_sides(self, *sides):  # служебный, принимает неограниченное кол-во сторон,
+    def __is_valid_sides(self, *sides):
         # возвращает True если все стороны целые положительные числа и кол-во новых сторон
         # совпадает с текущим, False - во всех остальных случаях
-        valid = []
-        if len(sides) == self.__sides:
-            valid.append(True)
-        else:
-            valid.append(False)
+        if len(sides) != len(self.__sides):
+            print(len(sides), len(self.__sides))
+            return False
         for i in sides:
             if i <= 0 or not isinstance(i, int):
-                valid.append(False)
-                break
+                return False
             else:
                 continue
-        if len(valid) == 1:
-            valid.append(True)
-        return valid
+        return True
 
     def set_sides(self, *new_sides):  # должен принимать новые стороны, если их количество
         # не равно sides_count, то не изменять, в противном случае - менять
-        if self.__is_valid_color(*new_sides):
+        if self.__is_valid_sides(new_sides):
             self.__sides = new_sides
         else:
             self.__sides = [1 for i in range(self.sides_count)]  # список с единицами по количеству сторон
-
 
     def get_sides(self):  # список размеров сторон фигуры
         return self.__sides
@@ -94,18 +89,21 @@ class Triangle(Figure):
 
 class Cube(Figure):
     sides_count = 12
+    __sides = [1]
 
     def __init__(self, color, *sides):
-        self.__sides = [1]
         super().__init__(color, *sides)
+        # self.__sides = 1
+
 
     def __str__(self):
         return '_____Кубик_____'
 
     def get_volume(self):
-        return self._Figure__sides[0] ** 3
+        return self.__sides[0] ** 3
 
-nums = 12, 13, 14, 15, 16, 17, 18
+
+nums = [12, 13, 14, 15, 16, 23, 33, 45]
 cube = Cube((123, 123, 125), 15, 14, -13)
-print(cube._Figure__is_valid_sides(*nums))
+# print(cube._Figure__is_valid_sides(*nums))
 print(cube._Cube__sides)
