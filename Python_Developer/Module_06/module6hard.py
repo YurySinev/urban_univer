@@ -5,13 +5,13 @@ class Figure:
     filled = False
 
     def __init__(self, color, *sides):
-        self.__color = [255, 255, 255] # по умолчанию белый
+        self.__color = [255, 255, 255]  # по умолчанию белый
         if len(color) == 3:
             r, g, b = color  # распаковываем кортеж
             self.set_color(r, g, b)  # передаем его на проверку и установку
         if self.__color != [255, 255, 255]:
             self.filled = True
-        self.__sides = [1 for i in range(self.sides_count)]
+        self.__sides = [1] * self.sides_count if len(sides) != self.sides_count else list(sides)
 
     def __str__(self):
         return '_____Просто фигура_____'
@@ -30,10 +30,11 @@ class Figure:
 
     def set_sides(self, *new_sides):  # должен принимать новые стороны, если их количество
         # не равно sides_count, то не изменять, в противном случае - менять
+        if isinstance(self, Cube):  # по-другому что-то не удалось придумать...
+            if len(new_sides) == 1:
+                new_sides = [new_sides[0]] * 12
         if self.__is_valid_sides(*new_sides):
             self.__sides = [i for i in new_sides]
-        else:
-            self.__sides = [1 for i in range(self.sides_count)]  # список с единицами по количеству сторон
 
     def get_sides(self):  # список размеров сторон фигуры
         return self.__sides
@@ -60,9 +61,9 @@ class Figure:
 class Circle(Figure):
     sides_count = 1
 
-    def __init__(self, color, circumference):
-        super().__init__(color, circumference)
-        self.__radius = circumference / (2 * 3.14159)  # радиус
+    def __init__(self, color, *circumference):
+        super().__init__(color, *circumference)
+        self.__radius = self._Figure__sides[0] / (2 * 3.14159)  # радиус
 
     def __str__(self):
         return '_____Окружность_____'
@@ -91,7 +92,8 @@ class Cube(Figure):
     sides_count = 12
 
     def __init__(self, color, *sides):
-        self.__sides = [1]
+        if len(sides) == 1:  # по-другому что-то не удалось придумать...
+            sides = [sides[0]] * 12
         super().__init__(color, *sides)
 
     def __str__(self):
