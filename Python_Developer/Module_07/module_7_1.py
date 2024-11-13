@@ -29,7 +29,6 @@ class Shop:
         for i in products:
             if str(i) in content:
                 print(f'Продукт {str(i)} уже есть в магазине')
-                # continue
             else:
                 file.write(str(i) + '\n')
         file.close()
@@ -50,11 +49,13 @@ if __name__ == '__main__':
     print(s1.get_products())
 
 # Вывод на консоль:
+
 # Первый запуск:
 # Spaghetti, 3.4, Groceries
 # Potato, 50.5, Vegetables
 # Spaghetti, 3.4, Groceries
 # Potato, 5.5, Vegetables
+
 # Второй запуск:
 # Spaghetti, 3.4, Groceries
 # Продукт Potato, 50.5, Vegetables уже есть в магазине
@@ -63,6 +64,7 @@ if __name__ == '__main__':
 # Potato, 50.5, Vegetables
 # Spaghetti, 3.4, Groceries
 # Potato, 5.5, Vegetables
+
 # Как выглядит файл после запусков:
 #     Potato, 50.5, Vegetables
 #     Spaghetti, 3.4, Groceries
