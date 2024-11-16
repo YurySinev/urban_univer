@@ -20,7 +20,7 @@ class WordsFinder:
     # удаление пунктуации из текста:
     def remove_punctuation(self, text):
         punctuation = [',', '.', '=', '!', '?', ';', ':']  # это надо удалить
-        no_punctuation = ''.join(char for char in text if char not in punctuation)  # Новая строка без пунктуации
+        no_punctuation = ''.join(char for char in text if char not in punctuation)  # новая строка без пунктуации
         no_punctuation_list = no_punctuation.split()  # преобразуем ее в список
         for i in no_punctuation_list:  # проходимся по этому списку и
             if i == '-':  # отдельно проверяем, нет ли среди его элементов тире
