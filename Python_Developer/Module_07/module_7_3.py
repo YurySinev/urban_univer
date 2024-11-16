@@ -11,7 +11,7 @@ class WordsFinder:
             if isinstance(item, tuple) or isinstance(item, list):  # если внутри аргументов есть кортеж или список
                 result_list.extend(self.files_to_list(item))  # персонально для них снова вызываем эту функцию
             else:
-                if ',' in item:  # если два и более аргумента - одна строка
+                if ',' in item:  # если два и более аргумента = одна строка
                     result_list.extend(item.split(', '))  # то разделяем ее на список и добавляем его
                 else:
                     result_list.append(item)
