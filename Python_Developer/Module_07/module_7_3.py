@@ -44,7 +44,7 @@ class WordsFinder:
                 result[key] = value.index(word.lower()) + 1
             else:
                 message = f'Нет такого слова'
-        return result if result else message
+        return result or message
 
     # сколько раз встречается слово? - {имя файла: сколько раз встречается}
     def count(self, word) -> dict:
