@@ -30,7 +30,7 @@ class WordsFinder:
     # получение списка всех слов из файлов:
     def get_all_words(self) -> dict:
         for file in self.file_names:
-            with open(file) as f:  # открываем файл
+            with open(file, encoding='utf-8') as f:  # открываем файл
                 content = self.remove_punctuation(f.read())  # приводим его содержимое к списку слов
                 self.all_words[file] = [word.lower() for word in content]  # добавляем этот список в словарь
         return self.all_words
@@ -38,12 +38,13 @@ class WordsFinder:
     # поиск слова по всему словарю. Возвращает словарь {имя файла: порядковый номер слова}:
     def find(self, word) -> dict:
         result = {}
+        message = ''
         for key, value in self.all_words.items():
             if word.lower() in value:
                 result[key] = value.index(word.lower()) + 1
             else:
-                return f'Ни хера нет такого слова'
-        return result
+                message = f'Нет такого слова'
+        return result if result else message
 
     # сколько раз встречается слово? - {имя файла: сколько раз встречается}
     def count(self, word) -> dict:
