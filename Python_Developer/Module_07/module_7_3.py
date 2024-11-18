@@ -49,8 +49,9 @@ class WordsFinder:
     # сколько раз встречается слово? - {имя файла: сколько раз встречается}
     def count(self, word) -> dict:
         result = {}
-        count = 0
+        # count = 0
         for key, value in self.all_words.items():
+            count = 0
             for i in value:
                 if word.lower() == i:
                     count += 1
