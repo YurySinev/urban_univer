@@ -43,7 +43,7 @@ class WordsFinder:
             if word.lower() in value:
                 result[key] = value.index(word.lower()) + 1
             else:
-                message = f'Нет такого слова'
+                message = f'Слова "{word}" нет в словаре.'
         return result or message
 
     # сколько раз встречается слово? - {имя файла: сколько раз встречается}
