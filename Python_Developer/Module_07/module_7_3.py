@@ -38,12 +38,10 @@ class WordsFinder:
     # поиск слова по всему словарю. Возвращает словарь {имя файла: порядковый номер слова}:
     def find(self, word) -> dict:
         result = {}
-        message = ''
+        message = f'Слова "{word}" нет в словаре.'
         for key, value in self.all_words.items():
             if word.lower() in value:
                 result[key] = value.index(word.lower()) + 1
-            else:
-                message = f'Слова "{word}" нет в словаре.'
         return result or message
 
     # сколько раз встречается слово? - {имя файла: сколько раз встречается}

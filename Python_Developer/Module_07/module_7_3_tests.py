@@ -8,5 +8,8 @@ finder2 = WordsFinder('test_file.txt', 'sample.txt', 'sample3.txt')
 print(finder2.get_all_words())  # Все слова
 print(finder2.find('TEXT'))  # 3 слово по счёту
 print(finder2.find('строка'))  # 7 слово по счёту
-print(finder2.find('Бобик'))  # 7 слово по счёту
+print(finder2.find('Бобик'))  #
 print(finder2.count('teXT'))  # 4 слова teXT в тексте всего
+
+# with open('test_file_1252.txt') as f:
+#     print(f.read())
