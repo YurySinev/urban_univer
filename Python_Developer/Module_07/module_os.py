@@ -1,4 +1,4 @@
-import os
+import module_os
 import subprocess
 
 # 1. os.getcwd(): Возвращает текущий рабочий каталог.
