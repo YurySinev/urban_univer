@@ -1,3 +1,6 @@
+#
+# Этот скрипт должен корректно работать на MacOS, Windows и Linux
+#
 import tkinter
 import os
 import subprocess  # это для Мака и Линукса
