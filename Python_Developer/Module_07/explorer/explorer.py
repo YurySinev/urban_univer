@@ -1,4 +1,3 @@
-#
 # Этот скрипт должен корректно работать на MacOS, Windows и Linux
 #
 import tkinter
