@@ -47,9 +47,10 @@ print('Папки: ', dirs)
 files = [f for f in os.listdir() if os.path.isfile(f)]
 print('Файлы: ', files)
 file_path = files[9]
-# subprocess.Popen(['open', files[14]]) # это команда для MacOS, открывает текстовый документ
-os.startfile(file_path) # это команда из видео-лекции. Может, под Windows она работает. На MacOS нет.
+subprocess.Popen(['open', files[14]]) # это команда для MacOS, открывает текстовый документ
+# os.startfile(file_path) # это команда из видео-лекции. Может, под Windows она работает. На MacOS нет.
 print(os.stat(files[12])) # информация о файле
 print(os.stat(files[7]).st_size)
 # os.startfile(files[9])
+# os.startfile(files[3], 'open')
 
