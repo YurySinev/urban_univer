@@ -1,29 +1,43 @@
 import tkinter
-import tkinter.ttk
 import os
+import subprocess  # это для Мака и Линукса
 from tkinter import filedialog
+import platform  # проверка - какая операционка?
 
 
+# выбираем команду открытия файла в зависимости от операционки:
+def open_file(filename):
+    if platform.system() == 'Windows':
+        os.startfile(filename)
+    elif platform.system() == 'Darwin':  # macOS
+        subprocess.call(['open', filename], shell=False)
+    elif platform.system() == 'Linux':
+        subprocess.call(['xdg-open', filename], shell=False)
+
+
+# выбор файла:
 def file_select():
-    filename = filedialog.askopenfile(initialdir='.', title='Выберите файл',
-                                      filetypes=(('Текстовый файл', '.txt'), ('Все файлы', '*')))
-    text['text'] = text['text'] + ' ' + filename
-    os.startfile(filename)
+    filename = filedialog.askopenfilename(initialdir='.', title='Выберите файл',
+                                          filetypes=(('Текстовый файл', '.txt'), ('Все файлы', '*')))
+    text['text'] = 'Файл: ' + filename
+    # os.startfile(filename)
+    open_file(filename)
 
 
 window = tkinter.Tk()
+# параметры окна:
 window.title('Проводник')
-window.geometry('450x150')
+window.geometry('650x150')
 window.configure(bg='black')
 window.resizable(False, False)
 
-text = tkinter.Label(window, text='Файл: ', height=5, width=50,
-                     background='silver', foreground='blue')
+# текстовое поле:
+text = tkinter.Label(window, text='Файл: ', height=5, width=75, background='silver', foreground='blue')
 text.grid(column=1, row=1)
 
-button_select = tkinter.Button(window, text='Выбрать файл',
-                               width=20, height=3, background='silver', foreground='blue',
-                               command=file_select)
+# кнопка выбора:
+button_select = tkinter.Button(window, text='Выбрать файл', width=20, height=3,
+                               background='silver', foreground='blue', command=file_select)
 button_select.grid(column=1, row=2, pady=1)
 
 window.mainloop()
