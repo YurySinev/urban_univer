@@ -1,59 +1,47 @@
 # Домашнее задание по теме "Сложные моменты и исключения в стеке вызовов функции"
 
-# Задача "План перехват":
-# Напишите 2 функции:
-def personal_sum(*numbers):
-    incorrect_data = 0
-    number_count = 0
-    result = 0
+# Задача "План перехват"
+
+# принимает коллекцию numbers, подсчитывает сумму чисел и кол-во неверных данных:
+def personal_sum(numbers) -> tuple:
+    incorrect_data = 0  # неверные данные
+    result = 0  # сумма чисел
     for i in numbers:
         try:
-            if isinstance(i, list) or isinstance(i, tuple) or isinstance(i, set):
-                nested_sum, nested_correct, nested_incorrect = personal_sum(*i)
-                result += nested_sum
-                number_count += nested_correct
-                incorrect_data += nested_incorrect
-            else:
-                result += i
-                number_count += 1
-        except TypeError as err:
+            result += i
+        except TypeError:
             incorrect_data += 1
 
-    return result, number_count, incorrect_data
+    return result, incorrect_data
 
 
-def calculate_average(*numbers):
-    sum, number_count, incorrect_data = personal_sum(numbers)
-    average = 0
+# принимает коллекцию и возвращает среднее арифметическое:
+def calculate_average(numbers) -> float:
+    number_count = 0  # счетчик количества чисел в коллекции
+    try:  # пробуем проитерировать коллекцию:
+        for num in numbers:
+            try:  # разбираемся с данными в numbers:
+                if isinstance(num, int) or isinstance(num, float):  # это число?
+                    number_count += 1
+                else:  # не число?
+                    raise TypeError
+            except TypeError:
+                print(f'Некорректный тип данных для подсчёта суммы - {num}')
+    except TypeError:  # тип данных - не коллекция
+        print('В numbers записан некорректный тип данных')
+        return None
+
+    sum = personal_sum(numbers)[0]  # высчитываем сумму чисел в коллекции
+
     try:
-        average = sum / number_count
-    except ZeroDivisionError:
+        result = sum / number_count  # среднее арифметическое
+    except ZeroDivisionError:  # страховка от деления на ноль
         return 0
-    # except TypeError:
-    #     return f'Некорректный тип данных для подсчёта суммы - {}'
-    # for i in numbers:
-    #     try:
-    #         i / 2
-    #     except TypeError as err:
-    #         print(f'Некорректный тип данных для подсчёта суммы - {i}')
 
-    # return sum
-# Среднее арифметическое - сумма всех данных делённая на их количество.
-# 1. Должна принимать коллекцию numbers и возвращать: среднее арифметическое всех чисел.
-# 2. Внутри для подсчёта суммы используйте функцию personal_sum написанную ранее.
-# 3. Т.к. коллекция numbers может оказаться пустой,
-# то обработайте исключение ZeroDivisionError при делении на 0 и верните 0.
-# 4. Также в numbers может быть записана не коллекция, а другие типы данных, например числа.
-# Обработайте исключение TypeError выводя строку 'В numbers записан некорректный тип данных'.
-# В таком случае функция просто вернёт None.
+    return result
 
-# Пункты задачи:
-# Создайте функцию personal_sum на основе условий задачи.
-# Создайте функцию calculate_average на основе условий задачи.
-# Вызовите функцию calculate_average несколько раз, передав в неё данные разных вариаций.
 
 # Пример выполнения программы:
-
 if __name__ == '__main__':
     print(f'Результат 1: {calculate_average("1, 2, 3")}')  # Строка перебирается, но каждый символ - строковый тип
     print(f'Результат 2: {calculate_average([1, "Строка", 3, "Ещё Строка"])}')  # Учитываются только 1 и 3
