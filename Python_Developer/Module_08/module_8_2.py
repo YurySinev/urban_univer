@@ -30,11 +30,9 @@ def calculate_average(numbers) -> float:
     except TypeError:  # тип данных - не коллекция
         print('В numbers записан некорректный тип данных')
         return None
-
-    sum = personal_sum(numbers)[0]  # высчитываем сумму чисел в коллекции
-
+    # среднее арифметическое:
     try:
-        result = sum / number_count  # среднее арифметическое
+        result = personal_sum(numbers)[0] / number_count
     except ZeroDivisionError:  # страховка от деления на ноль
         return 0
 
