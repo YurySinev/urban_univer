@@ -1,25 +1,24 @@
 # Домашнее задание по теме "Списковые, словарные сборки"
-#
-# Цель: закрепить знания о списочных и словарных сборках, решив несколько небольших задач.
-#
+
 # Задача:
-# Даны несколько списков, состоящих из строк
+# Даны несколько списков, состоящих из строк:
 first_strings = ['Elon', 'Musk', 'Programmer', 'Monitors', 'Variable']
 second_strings = ['Task', 'Git', 'Comprehension', 'Java', 'Computer', 'Assembler']
 
-# Список, состоящий из длин строк списка first_strings, при условии,
+# Надо создать:
+# 1. Список, состоящий из длин строк списка first_strings, при условии,
 # что длина строк не менее 5 символов:
 first_result = [len(x) for x in first_strings if len(x) > 4]
 
-# Список, состоящий из пар слов (кортежей) одинаковой длины. Каждое слово
+# 2. Список, состоящий из пар слов (кортежей) одинаковой длины. Каждое слово
 # из списка first_strings должно сравниваться с каждым из second_strings:
-second_result = [(x, y) for x in first_strings for y in second_strings if len(x)==len(y)]
+second_result = [(x, y) for x in first_strings for y in second_strings if len(x) == len(y)]
 
-# Словарь, где пара ключ-значение - строка : длина строки. Значения строк -
+# 3. Словарь, где пара ключ-значение - строка : длина строки. Значения строк -
 # из объединённых вместе списков first_strings и second_strings.
 # Условие записи пары в словарь - чётная длина строки.
-third_result = {x: len(x) for x in first_strings}
-third_result.update({y: len(y) for y in second_strings})
+third_result = {x: len(x) for x in first_strings if not len(x) % 2}
+third_result.update({y: len(y) for y in second_strings if not len(y) % 2})
 
 # Пример результата выполнения программы:
 # Пример выполнения кода:
