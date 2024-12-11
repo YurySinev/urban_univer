@@ -1,6 +1,11 @@
 first = ['Strings', 'Student', 'Computers']
 second = ['Строка', 'Урбан', 'Компьютер']
 
-result = {i: len(first[i]) == len(second[i]) for i in range(min(len(first), len(second)))}
+result = (len(first[i]) == len(second[i]) for i in range(min(len(first), len(second))))
 
-print(result)
+print(list(result))
+print(list(result))
+
+# Консоль:
+# [False, False, True]
+# [] - "ленивые" вычисления
