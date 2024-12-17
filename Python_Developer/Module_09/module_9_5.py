@@ -14,16 +14,16 @@ class Iterator:
             raise StepValueError('Шаг не может быть равен 0')
         else:
             self.step = step  # step - шаг, с которым совершается итерация.
-        self.pointer = start  # pointer - указывает на текущее число в итерации (изначально start)
+        # self.pointer = start  # pointer - указывает на текущее число в итерации (изначально start)
 
     # Методы:
 
     def __iter__(self):  # сбрасывает значение pointer на start и возвращает сам объект итератора.
-        self.pointer = self.pointer
+        self.pointer = self.start
         return self
 
     def __next__(self):
-        def moving_up():    # для движение вверх от start к stop
+        def moving_up():  # для движение вверх от start к stop
             if self.pointer > self.stop:
                 raise StopIteration
             else:
@@ -31,7 +31,7 @@ class Iterator:
                 self.pointer += self.step
                 return current_value
 
-        def moving_down(): # для движения вниз от start к stop
+        def moving_down():  # для движения вниз от start к stop
             if self.pointer < self.stop:
                 raise StopIteration
             else:
@@ -39,12 +39,12 @@ class Iterator:
                 self.pointer += self.step
                 return current_value
 
-        if self.start < self.stop and self.step > 0: # при соблюдении этих условий
-            return moving_up() # движемся вверх
-        elif self.start > self.stop and self.step < 0: # при этих условиях
-            return moving_down() # движемся вниз
-        else:
-            raise StopIteration # при иных условиях никуда не движемся
+        if self.start < self.stop and self.step > 0:  # при этих условиях
+            return moving_up()  # движемся вверх
+        elif self.start > self.stop and self.step < 0:  # при этих условиях
+            return moving_down()  # движемся вниз
+        else:  # при иных условиях
+            raise StopIteration  # никуда не движемся
 
 
 if __name__ == '__main__':
