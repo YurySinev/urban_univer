@@ -23,7 +23,7 @@ class Iterator:
         return self
 
     def __next__(self):
-        def moving_up():  # для движение вверх от start к stop
+        def moving_up():  # движение вверх от start к stop
             if self.pointer > self.stop:
                 raise StopIteration
             else:
@@ -31,7 +31,7 @@ class Iterator:
                 self.pointer += self.step
                 return current_value
 
-        def moving_down():  # для движения вниз от start к stop
+        def moving_down():  # движение вниз от start к stop
             if self.pointer < self.stop:
                 raise StopIteration
             else:
@@ -39,6 +39,7 @@ class Iterator:
                 self.pointer += self.step
                 return current_value
 
+        # Выбор направления итерации:
         if self.start < self.stop and self.step > 0:  # при этих условиях
             return moving_up()  # движемся вверх
         elif self.start > self.stop and self.step < 0:  # при этих условиях
