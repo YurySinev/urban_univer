@@ -131,3 +131,10 @@ print(result)
 
 result = map(by_100500, my_numbers)
 pprint(list(result))
+
+# Напишите словарную сборку для создания нового словаря, содержащего только пары ключ-значение,
+# где значение больше 10, из словаря {'a': 5, 'b': 15, 'c': 20, 'd': 8}.
+
+new_dic = {k: v for k, v in {'a': 5, 'b': 15, 'c': 20, 'd': 8}.items() if v > 10}
+print(new_dic)
+it = iter(new_dic)
