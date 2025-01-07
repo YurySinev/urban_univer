@@ -7,6 +7,11 @@ guests_names = ['Maria', 'Oleg', 'Vakhtang', 'Sergey', 'Darya', 'Arman',
                 'Victoria', 'Nikita', 'Galina', 'Pavel', 'Ilya', 'Alexandra']
 # # Создание гостей
 guests = [Guest(name) for name in guests_names]
-for i in guests:
-    i.start()
-    i.join()
+# for i in guests:
+#     i.start()
+#     i.join()
+#     print(i.name)
+
+cafe = Cafe(*tables)
+cafe.guest_arrival(*guests)
+cafe.discuss_guests()
